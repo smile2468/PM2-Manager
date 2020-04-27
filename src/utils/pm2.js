@@ -61,70 +61,70 @@ class PM2 {
   stop (compressed) {
     if (this.process === [] || this.process.length <= 0) {
       this.list(compressed, false)
-      compressed.message.channel.send('❎ 프로세스 목록을 불러오는 중입니다...').then(msg => {
+      compressed.message.channel.send('❎ Loading Process list...').then(msg => {
         if (!compressed.args.join(' ')) {
           this.client.logger.error(`[PM2:Stop] Process Name or ID is not provied! (${compressed.message.guild.id}-${compressed.message.author.id})`)
-          return msg.edit('❎ **프로세스 이름** 또는 **아이디**가 제공되지 않았습니다!')
+          return msg.edit('❎ **Process name** or **ID**is not provied!')
         }
 
         const findProcess = this.process.find(el => Number(el.id) === Number(compressed.args[0])) || this.process.find(el => String(el.name) === String(compressed.args.join(' ')))
         if (!findProcess) {
-          msg.edit('❎ 해당 프로세스는 존재하지 않습니다!')
+          msg.edit('❎ Process does not exist!')
           return this.client.logger.error(`[PM2:Stop] Process is not exist! (${compressed.message.guild.id}-${compressed.message.author.id})`)
         }
 
         pm2Module.stop(findProcess.id)
-        msg.edit(`✅ 해당 프로세스를 종료하는 중입니다... (\`${findProcess.id}-${findProcess.name}\`)`)
+        msg.edit(`✅ Shutdown Process... (\`${findProcess.id}-${findProcess.name}\`)`)
       })
     } else {
       if (!compressed.args.join(' ')) {
         this.client.logger.error(`[PM2:Stop] Process Name or ID is not provied! (${compressed.message.guild.id}-${compressed.message.author.id})`)
-        return compressed.message.channel.send('❎ **프로세스 이름** 또는 **아이디**가 제공되지 않았습니다!')
+        return compressed.message.channel.send('❎ **Process name** or **ID**is not provied!')
       }
 
       const findProcess = this.process.find(el => Number(el.id) === Number(compressed.args[0])) || this.process.find(el => String(el.name) === String(compressed.args.join(' ')))
       if (!findProcess) {
         this.client.logger.error(`[PM2:Stop] Process is not exist! (${compressed.message.guild.id}-${compressed.message.author.id})`)
-        return compressed.message.channel.send('❎ 해당 프로세스는 존재 하지 않습니다!')
+        return compressed.message.channel.send('❎ Process does not exist!')
       }
 
       pm2Module.stop(findProcess.id)
-      compressed.message.channel.send(`✅ 해당 프로세르르 종료하는 중입니다... (\`${findProcess.id}-${findProcess.name}\`)`)
+      compressed.message.channel.send(`✅ Shutdown Process... (\`${findProcess.id}-${findProcess.name}\`)`)
     }
   }
 
   restart (compressed) {
     if (this.process === [] || this.process.length <= 0) {
       this.list(compressed, false)
-      compressed.message.channel.send('❎ 프로세스 목록을 불러오는 중입니다...').then(msg => {
+      compressed.message.channel.send('❎ Loading Process list...').then(msg => {
         if (!compressed.args.join(' ')) {
           this.client.logger.error(`[PM2:Restart] Process Name or ID is not provied! (${compressed.message.guild.id}-${compressed.message.author.id})`)
-          return msg.edit('❎ **프로세스 이름** 또는 **아이디**가 제공되지 않았습니다!')
+          return msg.edit('❎ **Process name** or **ID**is not provied!')
         }
 
         const findProcess = this.process.find(el => Number(el.id) === Number(compressed.args[0])) || this.process.find(el => String(el.name) === String(compressed.args.join(' ')))
         if (!findProcess) {
           this.client.logger.error(`[PM2:Restart] Process is not exist! (${compressed.message.guild.id}-${compressed.message.author.id})`)
-          return msg.edit('❎ 해당 프로세스는 존재 하지 않습니다!')
+          return msg.edit('❎ Process does not exist!')
         }
 
         pm2Module.restart(findProcess.id)
-        msg.edit(`✅ 해당 프로세스를 재시작 하는 중입니다... (\`${findProcess.id}-${findProcess.name}\`)`)
+        msg.edit(`✅ Restarting Process... (\`${findProcess.id}-${findProcess.name}\`)`)
       })
     } else {
       if (!compressed.args.join(' ')) {
         this.client.logger.error(`[PM2:Restart] Process Name or ID is not provied! (${compressed.message.guild.id}-${compressed.message.author.id})`)
-        return compressed.message.channel.send('❎ **프로세스 이름** 또는 **아이디**가 제공되지 않았습니다!')
+        return compressed.message.channel.send('❎ **Process name** or **ID**is not provied!')
       }
 
       const findProcess = this.process.find(el => Number(el.id) === Number(compressed.args[0])) || this.process.find(el => String(el.name) === String(compressed.args.join(' ')))
       if (!findProcess) {
         this.client.logger.error(`[PM2:Restart] Process is not exist! (${compressed.message.guild.id}-${compressed.message.author.id})`)
-        return compressed.message.channel.send('❎ 해당 프로세스는 존재 하지 않습니다!')
+        return compressed.message.channel.send('❎ Process does not exist!')
       }
 
       pm2Module.restart(findProcess.id)
-      compressed.message.channel.send(`✅ 해당 프로세스를 재시작 하는 중입니다... (\`${findProcess.id}-${findProcess.name}\`)`)
+      compressed.message.channel.send(`✅ Restarting Process... (\`${findProcess.id}-${findProcess.name}\`)`)
     }
   }
 }
