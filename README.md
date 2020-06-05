@@ -20,23 +20,23 @@ pm2 start start.config.js
 // Example-Linux) start.config.js
 
 module.exports = {
-    apps: [
-        {
-          name: 'PM2 Manager', // Process name
-          script: './index.js', // Script file
-          cwd: '/home/bot/pm2-manager' // Script file path
-        },
-        {
-          name: 'UB-Main',
-          script: './index.js',
-          cwd: '/home/bot/ub-main'
-        },
-        {
-          name: 'LostArk-Global',
-          script: './cluster.js',
-          cwd: '/home/bot/lostark-rwt'
-        }
-    ]
+  apps: [
+    {
+      name: 'PM2 Manager', // Process name
+      script: './index.js', // Script file
+      cwd: '/home/bot/pm2-manager' // Script file path
+    },
+    {
+      name: 'UB-Main',
+      script: './index.js',
+      cwd: '/home/bot/ub-main'
+    },
+    {
+      name: 'LostArk-Global',
+      script: './cluster.js',
+      cwd: '/home/bot/lostark-rwt'
+    }
+  ]
 }
 ```
 
